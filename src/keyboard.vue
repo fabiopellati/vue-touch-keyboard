@@ -15,7 +15,7 @@
 
 	export default {
 		props: {
-			input: HTMLInputElement,
+			input: [HTMLInputElement, HTMLTextAreaElement],
 			layout: [String, Object],
 
 			accept: Function,
@@ -185,7 +185,7 @@
 			},
 
 			clickKey(e, key) {
-				if (!this.input) return;
+        if (!this.input) return;
 				if (this.options.preventClickEvent) e.preventDefault();
 
 				let caret = this.getCaret();
@@ -248,7 +248,6 @@
 					if (this.currentKeySet == "shifted")
 						this.changeKeySet("default");
 				}
-
 				this.input.value = text;
 				this.setFocusToInput(caret);
 
