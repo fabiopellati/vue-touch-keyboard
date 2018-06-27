@@ -86,7 +86,7 @@
 				});
 
 				return res;
-			}			
+			}
 		},
 
 		watch: {
@@ -131,14 +131,14 @@
 			},
 
 			getKeyStyle(key) {
-				if (key.width) 
+				if (key.width)
 					return {
 						flex: key.width
 					};
 			},
 
 			supportsSelection() {
-				return (/text|password|search|tel|url/).test(this.input.type); 
+				return (/text|password|search|tel|url|textarea/).test(this.input.type);
 			},
 
 			getCaret() {
@@ -234,7 +234,7 @@
 				if (addChar) {
 					if (this.input.maxLength <= 0 || text.length < this.input.maxLength) {
 						if (this.options.useKbEvents) {
-							let e = document.createEvent("Event"); 
+							let e = document.createEvent("Event");
 							e.initEvent("keydown", true, true);
 							e.which = e.keyCode = addChar.charCodeAt();
 							if (this.input.dispatchEvent(e)) {
@@ -243,7 +243,7 @@
 						} else {
 							text = this.insertChar(caret, text, addChar);
 						}
-					} 
+					}
 
 					if (this.currentKeySet == "shifted")
 						this.changeKeySet("default");
@@ -269,20 +269,20 @@
 					this.input.selectionStart = caret.start;
 					this.input.selectionEnd = caret.end;
 				}
-			}			
+			}
 		},
 
 		mounted() {
 			if (this.input) {
 				this.setFocusToInput();
-			}			
+			}
 		}
 	};
 	
 </script>
 
 <style lang="sass">
-		
+	
 	$width: 40;
 	$height: 2.2em;
 	$margin: 0.5em;
@@ -296,7 +296,7 @@
 			
 			.line {
 				display: flex;
-				justify-content: space-around;    
+				justify-content: space-around;
 				&:not(:last-child) {
 					margin-bottom: $margin;
 				}
@@ -343,7 +343,7 @@
 					background-color: #7d7d7d;
 					border-color: #656565;
 				}
-							
+				
 				&.featured {
 					color: #fff;
 					background-color: #337ab7;
@@ -360,7 +360,7 @@
 					transform: scale(.98); // translateY(1px);
 					color: #333;
 					background-color: #d4d4d4;
-					border-color: #8c8c8c;					
+					border-color: #8c8c8c;
 				}
 
 				&.activated {
@@ -378,7 +378,7 @@
 				background: #eff0f2;
 				border-radius: 4px;
 				border-top: 1px solid #ddd;
-				box-shadow: 
+				box-shadow:
 					inset 0 0 25px #e8e8e8,
 					0 1px 0 #c3c3c3,
 					0 2px 0 #c9c9c9,
@@ -386,7 +386,7 @@
 				text-shadow: 0px 1px 0px #f5f5f5;
 
 				&.control {
-					box-shadow: 
+					box-shadow:
 						0 1px 0 #c3c3c3,
 						0 2px 0 #c9c9c9,
 						0 2px 3px #333;
@@ -426,7 +426,7 @@
 			}
 			&:after {
 				clear: both;
-			}  
+			}
 		} // .keyboard
 
 	} // .vue-touch-keyboard
